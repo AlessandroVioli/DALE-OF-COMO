@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Results</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="elements.html" class="logo">results</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">intro</a></li>
+							<li><a href="generic.html">methodology</a></li>
+							<li class="active"><a href="elements.html">results</a></li>
+							<li><a href="webgis.html">webgis</a></li>
+						</ul>
+					
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								
+								<!-- Text stuff -->									
+									<p>Once the first susceptibility map is created, we need to validate the result. To do this, 
+										a validation script is run in R. This script requires reclassifying the susceptibility map layer
+										 into two simple classes, 0 and 1. All pixels falling in the 0 - 0.5 range are assigned a 0, indicating 
+										 no hazard, while those in the 0.5 - 1 range are assigned a 1, indicating a hazard. This new layer is compared
+										  with the testing points layer created earlier to determine the accuracy level.
+										</p>
+									<p>From the susceptibility map, it is clear that the analyzed area is heavily affected by landslides,
+										 with most of the region characterized by "moderate" and "high" risk levels</p>		
+										 <div class="table-wrapper">
+											<table>
+												<thead>
+													<tr>
+														<th>Thematic_class/Hazard													</th>
+														<th>1</th>
+														<th>2</th>
+														<th>UA</th>
+														<th>PA</th>
+														<th>OA</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>1</td>
+														<td>79</td>
+														<td>79</td>
+														<td>0.5</td>
+														<td>0.54</td>
+														<td>0.506756757</td>
+													</tr>
+													<tr>
+														<td>2</td>
+														<td>67</td>
+														<td>71</td>
+														<td>0.51</td>
+														<td>0.47</td>
+													</tr>
+													
+												</tfoot>
+											</table>
+										</div>		
+								<p>The initial overall accuracy is 0.506, which is quite low. To improve this, 
+									we can increase the number of training points used to create the susceptibility map, 
+									thus enhancing the level of detail in the information.</p>	
+								<p>Increasing the number of training points leads to a significant improvement in accuracy,
+									 which rises by 0.1 points to reach 0.83. This is a much better result, as it is well above 0.8 and shows
+									  a substantial improvement compared to the 1,000 points version. Possible reasons for this significant change 
+									  will be discussed later in this section.</p>	
+								<p>The final step involved selecting certain elements in the analyzed area to understand their exposure to the various landslide 
+									risks defined earlier: population, buildings, and forested areas were chosen.</p>		
+								<p>Starting with the first class, selected to understand what percentage of the population is actually
+									 affected by landslide risk, the charts below show that the data extracted from the models suggest 
+									that most of the population is subject to "high" or "very high" landslide risk.</p>	
+								<div class="image main"><img src="images/pop_exp.jpeg" style="width: 70%; height: auto;" alt="" class="reduced-size centered-image" /></div>
+								<p>Regarding buildings, chosen because they are sites that can attract a large number of people, 
+									they are primarily located in areas with "moderate" or "high" landslide risk.</p>
+									<div class="image main"><img src="images/building_exp.jpeg" style="width: 70%; height: auto;" alt="" class="reduced-size centered-image" /></div>
+								<p>Finally, the forested areas, similar to the previous class, 
+									show that most of the analyzed forest areas fall into the "moderate" or "high" risk categories.</p>
+									<div class="image main"><img src="images/forest_exp.jpeg" style="width: 70%; height: auto;" alt="" class="reduced-size centered-image" /></div>
+								
+								
+								
+								
+
+								
+								
+
+									
+								
+								
+							</section>
+
+					</div>
+
+					<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<section class="split contact">
+										<section class="alt">
+											<h3>work made by</h3>
+											<p>Marco Ambrosanio<br />
+												Alessandro Violi<br />
+												Anna Zilioli</p>
+										</section>
+								</div>
+								
+							</form>
+						</section>
+						<section class="split contact">
+							
+							<section>								
+								<p><a href="generic.html"><h2>HOME</h2></a></p>
+							</section>
+							<section>								
+								<p><a href="generic.html"><h2>METHODOLOGY</h2></a></p>
+							</section>
+							<section>								
+								<p><a href="elements.html"><h2>RESULTS</h2></a></p>
+							</section>
+							<section>								
+								<p><a href="webgis.html"><h2>WEBGIS</h2></a></p>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<p>Marco Ambrosanio<br />
+							Alessandro Violi<br />
+							Anna Zilioli</p>											
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

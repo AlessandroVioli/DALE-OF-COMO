@@ -1,0 +1,259 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Methodology</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="generic.html" class="logo">Methodology</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">intro</a></li>
+							<li class="active"><a href="generic.html">Methodology</a></li>
+							<li><a href="elements.html">results</a></li>
+							<li><a href="webgis.html">webgis</a></li>
+						</ul>
+						
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									
+									
+									<p>This section will present the workflow and methodology applied to compute 
+										the Landslide Susceptibility Map and an indicator of Exposure Assessment.</p>									
+								</header>
+								<div class="image main">
+									<img src="images/schemino.jpg" style="width: 80%; height: auto;" alt="" class="reduced-size centered-image" />
+								</div>
+								<p><b>1. Data preprocessing for Susceptibility mapping:</b> the first phase of the work focused on data collection, continuing with the reading and analysis of the data, to better understand the study area.
+									<br /><b>2. Landslide Susceptibility Map:</b> in the second phase, the Susceptibility map was computed starting from the preprocessed layers obtained in Phase 1, to know the probability of landslides in the Como area.
+									<br /><b>3. Data preprocessing for exposure assessment:</b> this phase was focused on collecting and analyzing data that could be used to understand the exposure assessment of the area, with a focus on: the population, the buildings, and the forest that characterizes the territory.
+									<br /><b> 4. Exposure Assessment:</b> The final step consisted of estimating the number of people, buildings, and trees that compose the different areas of the Como territory according to their Landslide Susceptibility level.</p>
+								<h2>1. Data preprocessing for Susceptibility mapping: </h2>
+									<p> The first phase of the work focused on data collection, continuing with the reading and analysis of the data, to better understand the study area.</p>
+										<br />
+										    <header class="major">
+												<h3>DATA COLLECTION</h3>
+											</header>
+									<p>First, the data were clipped and reprojected to the area of the Dale of Como.</p>
+									<br />
+									<h3>DTM</h3>
+									<div class="image main"><img src="images/DTM.jpg" alt="" /></div>
+									<p>The Digital Terrain Model (DTM) is a raster dataset representing the terrain surface consisting of XYZ coordinates,  and it's helpful to process not only the elevation but also different information. The data is derived from the GeoPortale Lombardia of 2023.</p>
+									<br />
+									<h3>DUSAF</h3>
+									<div class="image main"><img src="images/DUSAF.jpg" alt="" /></div>
+									<p>The DUSAF is based on aerial photogrammetry and stands for “Agricultural and Forest Land Use Designation”; it's the regional database of land use and land cover in Lombardy. The data is derived from the GeoPortale Lombardia of 2023.</p>
+									<br />
+									<h3>NDVI</h3>
+									<div class="image main"><img src="images/NDVI.jpg" alt="" /></div>
+									<p>The “Normalized Difference Vegetation Index” (NDVI) indicates the biomass's greenness, quantifying vegetation's health and density through color bands. The data is derived from the ESA Copernicus Sentinel-2 missions of 2020.</p>
+									<br />
+									<h3>ROADS</h3>
+									<div class="image main"><img src="images/Streets.jpg" alt="" /></div>
+									<p>The data represents the buffers of distances from 50 to 500 meters of the main roads in the area. The data is derived from OpenStreetMap of 2023.</p>
+									<br />
+									<h3>RIVER NETWORK</h3>
+									<div class="image main"><img src="images/Rivers.jpg" alt="" /></div>
+									<p>The data represents the buffers of distances from 50 to 500 meters of the main watercourses in the area. The data is derived from OpenStreetMap of 2023.</p>
+									<br />
+									<h3>GEOLOGICAL FAULTS</h3>
+									<div class="image main"><img src="images/Faults.jpg" alt="" /></div>
+									<p>The data represents the buffers of distances from 50 to 500 meters of the main geological faults in the area. The data is derived from GeoPortale Lombardia.</p>
+									<div class="image main"><img src="images/Contour.jpg" alt="" /></div>
+									<p>Another interesting figure to consider is the contour lines, the union of points of equal elevation above mean sea level. it is useful to understand the arrangement of heights in the territory; the darker the line, the higher the area.</p>
+									<br />
+										<header class="major">
+											<h3>PREPROCESSING DATA</h3>
+										</header>
+									<p>	Subsequently, from the DTM, specific factors, fundamental for the further steps, were extracted.</p>
+									<h3>SLOPE ANGLE</h3>
+									<div class="image main"><img src="images/Slope.jpg" alt="" /></div>
+									<p>The slope represents the inclination angle of the terrain and is strongly related to landslide occurrence. With the increase of the angle the shear stress increases, and the possibility of a movement is higher.</p>
+									<h3>ASPECT</h3>
+									<div class="image main"><img src="images/Aspect.jpg" alt="" /></div>
+									<p>The aspect depicts the orientation of the slope of the terrain. It is strictly linked to soil moisture content and, also to vegetation presence and density.</p>
+									<br />
+									<h3>PLAN CURVATURE</h3>
+									<div class="image main"><img src="images/Plan_curvature.jpg" alt="" /></div>
+									<p>The plan curvature indicates the curvature of the slope along its plan side. Both concave and convex terrains can influence the formation of landslides.</p>
+									<br />
+									<h3>PROFILE CURVATURE</h3>
+									<div class="image main"><img src="images/Profile_curvature.jpg" alt="" /></div>
+									<p>The profile curvature indicates the curvature of the slope along its profile side. Both concave and convex terrains can influence the formation of landslides.</p>
+									<br />
+									<h3>NO LANDSLIDE ZONES</h3>
+									<p>It was important at this point to define the 'No Landslide Zones', as there is not a precise definition of them, were identified areas where the probability of landslide to occur is low. It was assumed 'No Landslide Zones' are where the slope is &lt;20° or &gt;70°. The assumption is that in the first case, it's not inclined enough, while in the latter it usually hosts compositions of too-hard rocks.</p>
+									<br />
+									<p>At this stage, were conventionally define "no landslide zones" as areas with no hazard (value = 1) and fields previously impacted by landslides as having the highest hazard (value = 0).</p>
+									<div class="image main"><img src="images/NLZ.jpg" alt="" /></div>
+									<header class="major">
+										<h3>SETTING THE TRAINING AND TESTING POINTS</h3>
+									</header>
+									<p>The existing data aren't sufficient to properly run the machine learning algorithm. The polygons need to be simplified by creating a layer of points, each assigned a specific hazard value.</p>
+									<p>Following this approach was generated a points layers. Specifically, was needed to evaluate two sets of points: one for training the model, to verify its precision, and, another for testing the accuracy of its results.</p>
+									<p>To create the layer from which the points will be generated, was important to remove the intersecting polygons between the NLZ layer and the landslide inventory and eliminate any overlapping polygons from the latter.</p>
+									<p>Once the unified layer was ready, the points could be created. Perform a random selection to divide the areas in a 70/30 ratio, with 70% for training and 30% for testing points. Use a random point generator to create the points layer, maintaining a 1:1 ratio between 0 Hazard and 1 Hazard points. With 1.000 generated points, there will be 700 training points and 300 testing points.</p>
+									<p>The final operation of this part was to join and sample the information on environmental factors with the training and testing point layers so that each point gets the information of every layer on which it spatially falls.</p>
+									<div class="image main"><img src="images/Training_testing.jpg" alt="" /></div>
+									<p>All the steps were performed using the QGIS application, and it was verified that all the layers share the same CRS, extent, and resolution. This is a crucial requirement for the algorithm to function correctly.</p>
+									<h2>2. Landslide Susceptibility Map: </h2>	
+									<header class="major">
+										<br />
+										<h3>PREPROCESSING THE DATA</h3>										
+									</header>
+									<p>The second step was to create the Susceptibility map through the Dzetsaka tool in the QGIS environment. To perform the computation, the algorithm needed all the environmental layers which were preprocessed in Step 1 and merged into one unique layer.</p>									
+									<div class="image main"><img src="images/Virtual.jpg" alt="" /></div>
+									<header class="major">
+										<br />
+										<h3>SUSCEPTIBILITY MAP GENERATION</h3>										
+									</header>
+									<p>To analyze the accuracy of the model all the preprocessed data were classified with the Random Forest machine learning algorithm which could provide the confidence map, which was transformed from classification to probability, developing the Landslide Susceptibility map.</p>									
+									<div class="image main"><img src="images/LandslideSusceptibilityMap.jpg" alt="" /></div>
+									<p>Instead, to analyze the accuracy of the work was reclassified the Landslide Susceptibility Map in two classes (1 and 2). In this way, they were computed with the training sampled points, where the reference column was hazard, to calculate the Error Matrix of the model.</p>									
+									<h3>ERROR MATRIX</h3>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Thematic_class/Hazard													</th>
+													<th>1</th>
+													<th>2</th>
+													<th>UA</th>
+													<th>PA</th>
+													<th>OA</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>1</td>
+													<td>79</td>
+													<td>79</td>
+													<td>0.5</td>
+													<td>0.54</td>
+													<td>0.506756757</td>
+												</tr>
+												<tr>
+													<td>2</td>
+													<td>67</td>
+													<td>71</td>
+													<td>0.51</td>
+													<td>0.47</td>
+												</tr>
+												
+											</tfoot>
+										</table>
+									</div>
+									<h2>3. Data preprocessing for exposure assessment </h2>
+									<p>In this phase, the objective was to evaluate the exposure of real-world elements to the recently calculated landslide susceptibility map. Specifically, this assessment focuses on the population, built-settlement, and forest data.</p>									
+									<p>To present the data more consistently, the Susceptibility map was reclassified from 0 to 4 classes, representing respectively a low, moderate, high, and very high susceptibility of the territory. Finally, it was fundamental to resample the Landslide Susceptibility Map using the extension and resolution of the clipped population raster dataset.</p>									
+									<div class="image main"><img src="images/Reclassify.jpg" alt="" /></div>
+									<header class="major">
+										<br />
+										<h3>THE ASSESSMENT POPULATION</h3>										
+									</header>
+									<p>The goal was to determine the number of people living in areas with high or low levels of landslide susceptibility. This data was sourced from WorldPop, a spatial raster dataset from 2020 that provides the estimated total population per grid cell. Was important to reproject and clip the population raster referred to our data characteristics before continuing with the statistics.</p>									
+									<div class="image main"><img src="images/Population.jpg" alt="" /></div>
+									<header class="major">
+										<br />
+										<h3>THE ASSESSMENT BUILT-SETTLEMENTS</h3>										
+									</header>
+									<p>The goal was to determine the number of built-settlements constructed in the area with high or low levels of landslide susceptibility. This data was sourced from WorldPop, which identifies the built-settlements area per grid cell, where field 0 identifies no settlements areas, and 1 built territories. Was important to reproject and clip the built-settlements raster referred to our data characteristics before continuing with the statistics.</p>								
+									<div class="image main"><img src="images/Built-settlement.jpg" alt="" /></div>
+									<header class="major">
+										<br />
+										<h3>THE ASSESSMENT FOREST</h3>										
+									</header>
+									<p>The goal was to determine the number of forest areas with high or low levels of landslide susceptibility. This data was sourced from GIS 4 SDGs, which provides the estimated total number of trees per grid cell. Was important to reproject and clip the forest raster referred to our data characteristics before continuing with the statistics.</p>								
+									<div class="image main"><img src="images/Forest.jpg" alt="" /></div>
+									<h2>4. Exposure Assessment </h2>
+									<p>The final step was to calculate the population, built settlements, and forest counts for each susceptibility class. The result was a table detailing the total number of people, settlements, and forest areas within each of the four susceptibility classes. To visualize them better, here you can see the three tables flanked with pie charts, for an improved reading.</p>								
+									<br />
+									<h3>POPULATION EXPOSURE</h3>
+									<div class="image main">
+										<img src="images/pie_pop.jpeg" style="width: 70%; height: auto;" alt="" class="reduced-size centered-image" />
+									</div>
+									<div class="image main"><img src="images/table_pop.jpeg" alt="" /></div>
+									<h3>BUILT-SETTLEMENT EXPOSURE</h3>
+									<div class="image main">
+										<img src="images/BS_PIE.jpeg" style="width: 70%; height: auto;" alt="" class="reduced-size centered-image" />
+									</div>
+									<div class="image main"><img src="images/BS_TABLE.jpeg" alt="" /></div>
+									<h3>FOREST EXPOSURE</h3>
+									<div class="image main">
+										<img src="images/PIE_FOREST.jpeg" style="width: 70%; height: auto;" alt="" class="reduced-size centered-image" />
+									</div>
+									<div class="image main"><img src="images/TAB_FOREST.jpeg" alt="" /></div>
+								</section>
+
+					</div>
+
+					<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<section class="split contact">
+										<section class="alt">
+											<h3>work made by</h3>
+											<p>Marco Ambrosanio<br />
+												Alessandro Violi<br />
+												Anna Zilioli</p>
+										</section>
+								</div>
+								
+							</form>
+						</section>
+						<section class="split contact">
+							
+							<section>								
+								<p><a href="generic.html"><h2>HOME</h2></a></p>
+							</section>
+							<section>								
+								<p><a href="generic.html"><h2>METHODOLOGY</h2></a></p>
+							</section>
+							<section>								
+								<p><a href="elements.html"><h2>RESULTS</h2></a></p>
+							</section>
+							<section>								
+								<p><a href="webgis.html"><h2>WEBGIS</h2></a></p>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
