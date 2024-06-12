@@ -17,22 +17,8 @@ let osm = new Tile({
     visible: true,
     source: new OSM()
 });
-let colombiaBoundary = new Image({
-    title: "Colombia Boundary",
-    source: new ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
-        params: { 'LAYERS': 'gis:LandslideSusceptibilityMap', 'STYLES': 'raster' }
-    })
-});
-var colombiaDepartments = new Image({
-    title: "Landslide Susceptibility Map",
-    source: new ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
-        params: { 'LAYERS': 'gis:LandslideSusceptibilityMap' }
-    }),
-    opacity: 0.5
-});
-var colombiaDepartments1 = new Image({
+
+var Landslide_Susceptibility_Map = new Image({
     title: "Landslide Susceptibility Map",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
@@ -41,7 +27,17 @@ var colombiaDepartments1 = new Image({
     opacity: 0.5
 });
 
-var colombiaRoads = new Image({
+var Landslide_Susceptibility_Map_reclass = new Image({
+    title: "Landslide Susceptibility Map Reclass",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:LandslideSusceptibilityMap_reclass' }
+    }),
+    opacity: 0.5
+});
+
+
+var Built_settlement = new Image({
     title: "Built Settlement",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
@@ -49,14 +45,158 @@ var colombiaRoads = new Image({
     }),
     visible: false
 });
-var colombiaRivers = new Image({
-    title: "Colombia Rivers",
+
+var DTM = new Image({
+    title: "DTM",
     source: new ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/wms',
-        params: { 'LAYERS': 'gis:COL_rivers' }
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:DTM' }
     }),
-    minResolution: 1000,
-    maxResolution: 5000
+    visible: false
+});
+
+var Aspect = new Image({
+    title: "Aspect",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:Aspect' }
+    }),
+    visible: false
+});
+
+var DUSAF = new Image({
+    title: "DUSAF",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:DUSAF' }
+    }),
+    visible: false
+});
+
+var FAULTS = new Image({
+    title: "Faults",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:Faults' }
+    }),
+    visible: false
+});
+
+var ITA_PPP = new Image({
+    title: "ITA_PPP",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:Ita_ppp_2020' }
+    }),
+    visible: false
+});
+
+var NDVI = new Image({
+    title: "NDVI",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:NDVI' }
+    }),
+    visible: false
+});
+
+var NLZ = new Image({
+    title: "NLZ",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:NLZ' }
+    }),
+    visible: false
+});
+
+var Plan_curvature = new Image({
+    title: "Plan Curvature",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:Plan_Curvature' }
+    }),
+    visible: false
+});
+
+var Profile_curvature = new Image({
+    title: "Profile Curvature",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:Profile_Curvature' }
+    }),
+    visible: false
+});
+
+var Rivers = new Image({
+    title: "Rivers",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:Rivers' }
+    }),
+    visible: false
+});
+
+var Roads = new Image({
+    title: "Roads",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:Roads' }
+    }),
+    visible: false
+});
+
+var Slope = new Image({
+    title: "Slope",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:Slope' }
+    }),
+    visible: false
+});
+
+var TestingPointsSample = new Image({
+    title: "TestingPointsSample",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:TestingPoints_sample' }
+    }),
+    visible: false
+});
+
+var TrainingPointsSample = new Image({
+    title: "TrainingPointsSample",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:TrainingPoints_sample' }
+    }),
+    visible: false
+});
+
+var confidence = new Image({
+    title: "Confidence",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:confidence' }
+    }),
+    visible: false
+});
+
+var forest = new Image({
+    title: "Forest",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:forest' }
+    }),
+    visible: false
+});
+
+var population = new Image({
+    title: "Population",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:population' }
+    }),
+    visible: false
 });
 
 //Create the layer groups and add the layers to them
@@ -64,15 +204,22 @@ let basemapLayers = new Group({
     title: "Base Maps",
     layers: [osm]
 });
-let overlayLayers = new Group({
-    title: "Overlay Layers",
-    layers: [colombiaDepartments,colombiaDepartments1, colombiaRivers, colombiaRoads]
+let step_1 = new Group({
+    title: "STEP 1",
+    layers: [DTM, Aspect, DUSAF, FAULTS, ITA_PPP, NDVI, NLZ, Plan_curvature, Profile_curvature, Rivers, Roads, Slope, TestingPointsSample, TrainingPointsSample]
 })
-
+let step_2 = new Group({
+    title: "STEP 2",
+    layers: [Landslide_Susceptibility_Map, confidence]
+})
+let step_3 = new Group({
+    title: "STEP 3",
+    layers: [Landslide_Susceptibility_Map_reclass, forest, population, Built_settlement]
+})
 // Map Initialization
 let map = new Map({
     target: document.getElementById('map'),
-    layers: [basemapLayers, overlayLayers],
+    layers: [basemapLayers, step_3, step_2, step_1],
     view: new View({
         center: fromLonLat([9.1222, 45.844]),
         zoom: 11.7
