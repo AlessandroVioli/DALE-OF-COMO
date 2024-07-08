@@ -1,32 +1,32 @@
-Massively by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+DALE-OF-COMO
+Welcome to the DALE-OF-COMO project! This repository contains the source code for an application designed to enhance your experience of Lake Como.
 
+Getting Started
+Follow the instructions below to set up and run the project on your local machine.
 
-This is Massively, a text-heavy, article-oriented design built around a huge background
-image (with a new parallax implementation I'm testing) and scroll effects (powered by
-Scrollex). A *slight* departure from all the one-pagers I've been doing lately, but one
-that fulfills a few user requests and makes use of some new techniques I've been wanting
-to try out. Enjoy it :)
+Prerequisites
+Ensure you have the following installed on your machine:
 
-Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
-you can use for pretty much whatever.
+Node.js (which includes npm)
+Installation
+1. Clone the repository to your local machine:
 
-(* = not included)
+git clone https://github.com/AlessandroVioli/DALE-OF-COMO.git
+cd DALE-OF-COMO
 
-AJ
-aj@lkn.io | @ajlkn
+2. Install the required dependencies:
 
+npm install
 
-Credits:
+Running the Application
+To start the application, use the following command:
 
-	Demo Images:
-		Unsplash (unsplash.com)
+npm run start
 
-	Icons:
-		Font Awesome (fontawesome.io)
+This will start the development server, and you can view the application in your browser at http://localhost:3000 (or another port, if specified).
 
-	Other:
-		jQuery (jquery.com)
-		Scrollex (github.com/ajlkn/jquery.scrollex)
-		Responsive Tools (github.com/ajlkn/responsive-tools)
+Contributing
+We welcome contributions! Please fork the repository and submit pull requests for review.
+
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
