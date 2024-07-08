@@ -25,8 +25,4 @@ npm run start
 
 This will start the development server, and you can view the application in your browser at http://localhost:3000 (or another port, if specified).
 
-Contributing
-We welcome contributions! Please fork the repository and submit pull requests for review.
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
