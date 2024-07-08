@@ -9,7 +9,7 @@ import { fromLonLat } from 'ol/proj';
 import { ScaleLine, FullScreen, MousePosition } from 'ol/control';
 import LayerSwitcher from 'ol-layerswitcher';
 import { createStringXY } from 'ol/coordinate';
-import { Style, Stroke } from 'ol/style';
+
 
 let osm = new Tile({
     title: "Open Street Map",
@@ -24,7 +24,7 @@ var Landslide_Susceptibility_Map = new Image({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
         params: { 'LAYERS': 'gis:LandslideSusceptibilityMap' }
     }),
-    opacity: 0.5
+    
 });
 
 var Landslide_Susceptibility_Map_reclass = new Image({
@@ -33,18 +33,10 @@ var Landslide_Susceptibility_Map_reclass = new Image({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
         params: { 'LAYERS': 'gis:LandslideSusceptibilityMap_reclass' }
     }),
-    opacity: 0.5
+    
 });
 
 
-var Built_settlement = new Image({
-    title: "Built Settlement",
-    source: new ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
-        params: { 'LAYERS': 'gis:built-settlement' }
-    }),
-    visible: false
-});
 
 var DTM = new Image({
     title: "DTM",
@@ -82,14 +74,6 @@ var FAULTS = new Image({
     visible: false
 });
 
-var ITA_PPP = new Image({
-    title: "ITA_PPP",
-    source: new ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
-        params: { 'LAYERS': 'gis:Ita_ppp_2020' }
-    }),
-    visible: false
-});
 
 var NDVI = new Image({
     title: "NDVI",
@@ -100,32 +84,7 @@ var NDVI = new Image({
     visible: false
 });
 
-var NLZ = new Image({
-    title: "NLZ",
-    source: new ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
-        params: { 'LAYERS': 'gis:NLZ' }
-    }),
-    visible: false
-});
 
-var Plan_curvature = new Image({
-    title: "Plan Curvature",
-    source: new ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
-        params: { 'LAYERS': 'gis:Plan_Curvature' }
-    }),
-    visible: false
-});
-
-var Profile_curvature = new Image({
-    title: "Profile Curvature",
-    source: new ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
-        params: { 'LAYERS': 'gis:Profile_Curvature' }
-    }),
-    visible: false
-});
 
 var Rivers = new Image({
     title: "Rivers",
@@ -154,41 +113,8 @@ var Slope = new Image({
     visible: false
 });
 
-var TestingPointsSample = new Image({
-    title: "TestingPointsSample",
-    source: new ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
-        params: { 'LAYERS': 'gis:TestingPoints_sample' }
-    }),
-    visible: false
-});
 
-var TrainingPointsSample = new Image({
-    title: "TrainingPointsSample",
-    source: new ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
-        params: { 'LAYERS': 'gis:TrainingPoints_sample' }
-    }),
-    visible: false
-});
 
-var confidence = new Image({
-    title: "Confidence",
-    source: new ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
-        params: { 'LAYERS': 'gis:confidence' }
-    }),
-    visible: false
-});
-
-var forest = new Image({
-    title: "Forest",
-    source: new ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
-        params: { 'LAYERS': 'gis:forest' }
-    }),
-    visible: false
-});
 
 var population = new Image({
     title: "Population",
@@ -199,23 +125,42 @@ var population = new Image({
     visible: false
 });
 
-//Create the layer groups and add the layers to them
+
+var Profile_curvature = new Image({
+    title: "Profile Curvature",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:Profile_Curvature' }
+    }),
+    visible: false
+});
+
+var Plan_curvature = new Image({
+    title: "Plan Curvature",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_18/wms',
+        params: { 'LAYERS': 'gis:Plan_Curvature' }
+    }),
+    visible: false
+});
+
 let basemapLayers = new Group({
     title: "Base Maps",
     layers: [osm]
 });
 let step_1 = new Group({
     title: "STEP 1",
-    layers: [DTM, Aspect, DUSAF, FAULTS, ITA_PPP, NDVI, NLZ, Plan_curvature, Profile_curvature, Rivers, Roads, Slope, TestingPointsSample, TrainingPointsSample]
+    layers: [DTM, Aspect, DUSAF, FAULTS, NDVI, Rivers, Roads, Slope, Profile_curvature, Plan_curvature]
 })
 let step_2 = new Group({
     title: "STEP 2",
-    layers: [Landslide_Susceptibility_Map, confidence]
+    layers: [Landslide_Susceptibility_Map]
 })
 let step_3 = new Group({
     title: "STEP 3",
-    layers: [Landslide_Susceptibility_Map_reclass, forest, population, Built_settlement]
+    layers: [Landslide_Susceptibility_Map_reclass, population]
 })
+
 // Map Initialization
 let map = new Map({
     target: document.getElementById('map'),
@@ -227,7 +172,7 @@ let map = new Map({
 });
 
 // Add the map controls:
-map.addControl(new ScaleLine()); //Controls can be added using the addControl() map function
+map.addControl(new ScaleLine()); 
 map.addControl(new FullScreen());
 map.addControl(
     new MousePosition({
@@ -241,8 +186,6 @@ map.addControl(
 var layerSwitcher = new LayerSwitcher({});
 map.addControl(layerSwitcher);
 
-//OPTIONAL
-//Add the Bing Maps layers
 var BING_MAPS_KEY = "AqbDxABFot3cmpxfshRqLmg8UTuPv_bg69Ej3d5AkGmjaJy_w5eFSSbOzoHeN2_H";
 var bingRoads = new Tile({
     title: 'Bing Maps—Roads',
@@ -264,7 +207,7 @@ var bingAerial = new Tile({
 });
 basemapLayers.getLayers().extend([bingRoads, bingAerial]);
 
-//Add the Stadia Maps layers
+
 var stadiaWatercolor = new Tile({
     title: "Stadia Watercolor",
     type: "base",
@@ -283,27 +226,15 @@ var stadiaToner = new Tile({
 })
 basemapLayers.getLayers().extend([stadiaWatercolor, stadiaToner]);
 
-//Add the WFS layer
-let vectorSource = new VectorSource({});
-const vectorLayer = new Vector({
-    title: "Colombia water areas",
-    source: vectorSource,
-    style: new Style({
-        stroke: new Stroke({
-            color: 'rgb(255, 102, 0)',
-            width: 4
-        })
-    }),
-    zIndex: 10
-});
+
+
 overlayLayers.getLayers().extend([vectorLayer]);
 
 
-// This allows to use the function in a callback!
 function loadFeatures(response) {
     vectorSource.addFeatures(new GeoJSON().readFeatures(response))
 }
-// This is not a good practice, but works for the jsonp.
+
 window.loadFeatures = loadFeatures;
 
 var base_url = "https://www.gis-geoserver.polimi.it/geoserver/gis/ows?";
@@ -316,77 +247,3 @@ wfs_url += "outputFormat=text%2Fjavascript&"
 wfs_url += "srsname=EPSG:3857&"
 wfs_url += "format_options=callback:loadFeatures"
 
-// This will request the WFS layer once the map is rendered.
-// Uses the map event 'postrender': https://openlayers.org/en/v8.2.0/apidoc/module-ol_MapEvent-MapEvent.html#event:postrender
-map.once('postrender', (event) => {
-    // Load the WFS layer
-    $.ajax({ url: wfs_url, dataType: 'jsonp' });
-})
-
-//Add the code for the Pop-up
-var container = document.getElementById('popup');
-var content = document.getElementById('popup-content');
-var closer = document.getElementById('popup-closer');
-
-var popup = new Overlay({
-    element: container
-});
-
-map.addOverlay(popup);
-
-// This ensures that JQuery ($) is already available in the page.
-$(document).ready(function () {
-    map.on('singleclick', function (event) {
-        //This iterates over all the features that are located on the pixel of the click (can be many)
-        var feature = map.forEachFeatureAtPixel(event.pixel, function (feature, layer) {
-            return feature;
-        });
-
-        //If there is a feature, open the popup by setting a position to it and put the data from the feature
-        if (feature != null) {
-            var pixel = event.pixel;
-            var coord = map.getCoordinateFromPixel(pixel);
-            popup.setPosition(coord);
-            content.innerHTML =
-                '<h5>Colombia Water Areas</h5><br><b>Name: </b>' +
-                feature.get('NAME') +
-                '</br><b>Description: </b>' +
-                feature.get('HYC_DESCRI');
-        } else {
-            //Only if the colombiaRoads layer is visible, do the GetFeatureInfo request
-            if (colombiaRoads.getVisible()) {
-                var viewResolution = (map.getView().getResolution());
-                var url = colombiaRoads.getSource().getFeatureInfoUrl(event.coordinate, viewResolution, 'EPSG:3857', { 'INFO_FORMAT': 'text/html' });
-
-                if (url) {
-                    var pixel = event.pixel;
-                    var coord = map.getCoordinateFromPixel(pixel);
-                    popup.setPosition(coord);
-                    //We do again the AJAX request to get the data from the GetFeatureInfo request
-                    $.ajax({ url: url })
-                        .done((data) => {
-                            //Put the data of the GetFeatureInfo response inside the pop-up
-                            //The data that arrives is in HTML
-                            content.innerHTML = data;
-                        });
-                }
-            }
-        }
-    });
-});
-
-
-// The click event handler for closing the popup.
-closer.onclick = function () {
-    popup.setPosition(undefined);
-    closer.blur();
-    return false;
-};
-
-
-// Adding map event for pointermove
-map.on('pointermove', function (event) {
-    var pixel = map.getEventPixel(event.originalEvent);
-    var hit = map.hasFeatureAtPixel(pixel);
-    map.getTarget().style.cursor = hit ? 'pointer' : '';
-});
